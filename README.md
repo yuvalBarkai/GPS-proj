@@ -6,11 +6,3 @@ Participents:
 
 - Elad
 - Yuval
-
-
-Elad notes:
-
-
-
-
-Yuval notes: 
