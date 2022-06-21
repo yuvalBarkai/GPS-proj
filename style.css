@@ -1,0 +1,108 @@
+body {
+    background-color: rgb(71, 71, 255);
+    margin: 0px;
+    zoom: reset;
+}
+
+
+body>* {
+    box-sizing: content-box;
+    overflow: hidden;
+}
+
+#container {
+    position: fixed;
+}
+
+#menu {
+    border-bottom: 1px solid rgb(0, 0, 94);
+    background-color: rgb(0, 0, 94);
+    color: aliceblue;
+    padding: 1%;
+    /* align-items: center;
+    vertical-align: auto; */
+    position: fixed;
+    overflow: hidden;
+
+    width: 100%;
+    top: 0px;
+}
+
+#settingsButton {
+
+    min-width: 2%;
+    min-height: 2%;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+    font-weight: bold;
+    /* float: right; */
+}
+
+#settingsButton:active {
+    background-color: beige;
+}
+
+#map {
+
+    width: 69%;
+    min-height: 50%;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 6%;
+    position: relative;
+    background-image: url("Assets/malcha.png");
+
+}
+
+#curLocation {
+    border-radius: 10px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    color: red;
+    /* display: block; */
+    display: none;
+    position: absolute;
+
+}
+
+#menu img {
+    padding-top: 4px;
+}
+
+
+#settingsWindow {
+    background-color: rgb(134, 139, 196);
+    position: fixed;
+    left: 40%;
+    top: 30%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    display: none;
+}
+
+#settingsWindow button {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    font-weight: bold;
+    min-width: 100px;
+
+}
+
+
+#version {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    
+    background-color: white;
+
+}

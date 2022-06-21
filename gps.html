@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script type="importmap">
+        {
+            "imports:"{
+                "nameOfImport": "locationOfCode",
+            }
+        }
+    </script> -->
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div id="menu">
+            <button id="settingsButton" onclick="settings()">
+                <img src="Assets/settings.png" height="30px" width="30px" alt="" srcset="">
+            </button>
+        </div>
+
+        <div id="map">
+            <img src="Assets/malcha.png" alt="" srcset="" height="100%" width="100%">
+            <div id="curLocation"></div>
+        </div>
+
+
+
+        <div id="settingsWindow">
+            <button>???</button></br>
+            <button>???</button></br>
+            <button onclick="resume()">Close</button></br>
+        </div>
+
+        <span id="version">Map V_0.02</span>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
