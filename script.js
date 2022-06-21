@@ -5,14 +5,17 @@ let bottomRight = [35.2947, 31.7266];
 let bottonLeft = [35.1459, 31.7269];
 let topLeft = [35.1459, 31.809];
 let topRight = [35.2947, 31.8091];
+let cursorX = 0;
+let cursorY = 0;
+
 
 
 /* To Do:
 
 */
-//$("#map").html(`<img src="Assets/malcha.png" alt="" srcset="" height="100%" width="100%">`);
 
-//31.75259683400189, 35.225758190283 HOME
+//$("#map").html(`<img src="Assets/malcha.png" alt="" srcset="" height="100%" width="100%">`);
+// 35.225758190283, 31.75259683400189 HOME geolocation
 
 
 
@@ -24,12 +27,29 @@ let topRight = [35.2947, 31.8091];
 //$("#settingsButton")
 
 
-$("#map").on("click", () => {
-    alert("I'm working on it");
-})
 /* $("#map").on("zoom", () => {
     alert("Wait for it, it will worth it !")
 }) */
+
+$("#map").on("click", (e) => {
+    cursorX = e.pageX - 202;
+    cursorY = e.pageY - 81;
+
+    // let cursorX = e.pageX / 709 * 98;
+    // let cursorY = e.pageY / 440 * 96;
+
+    
+    console.log(cursorX, cursorY);
+
+    //$("#selectLocation").css("display", "block");
+    $("#selectLocation").css("left", cursorX);
+    $("#selectLocation").css("top", cursorY);
+
+    //alert("still working on it");
+
+    // x: 159 - 868
+    // y: 61 - 528
+});
 
 let locationCheck;
 
@@ -40,15 +60,8 @@ setTimeout(function showLoc() {
 getLocation();
 
 
-//
-//top: 15.8%;  //80%
-//top: 95.8%;  //80%
-//left: 10%;  //79%
-//left: 89%;  //79%
 
 
-/* let mid = [(bottomRight[0] + bottonLeft[0]) / 2, (topLeft[1] + bottonLeft[1]) / 2];
-console.log(mid); */
 
 
 function getLocation() {
