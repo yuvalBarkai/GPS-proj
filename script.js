@@ -1,14 +1,14 @@
 /// <reference path="jquery-3.6.0.js" />
 
 //boundris of current's using map
-let bottomRight = [35.2947, 31.7266];
-let bottonLeft = [35.1459, 31.7269];
-let topLeft = [35.1459, 31.809];
-let topRight = [35.2947, 31.8091];
+const bottomRight = {x: 35.145776, y: 31.72717};
+const bottomLeft = {x: 35.145776, y: 31.72717};
+const topLeft = {x: 35.2954, y: 31.8084};
+const topRight = {x: 35.2954, y: 31.8084};
 let cursorX = 0;
 let cursorY = 0;
 
-
+const intervalInc = 1000;
 
 /* To Do:
 
@@ -16,7 +16,6 @@ let cursorY = 0;
 
 //$("#map").html(`<img src="Assets/malcha.png" alt="" srcset="" height="100%" width="100%">`);
 // 35.225758190283, 31.75259683400189 HOME geolocation
-
 
 
 //   _OBJECTS_
@@ -38,7 +37,6 @@ $("#map").on("click", (e) => {
     // let cursorX = e.pageX / 709 * 98;
     // let cursorY = e.pageY / 440 * 96;
 
-    
     console.log(cursorX, cursorY);
 
     //$("#selectLocation").css("display", "block");
@@ -46,7 +44,7 @@ $("#map").on("click", (e) => {
     $("#selectLocation").css("top", cursorY);
 
     //alert("still working on it");
-
+    
     // x: 159 - 868
     // y: 61 - 528
 });
@@ -55,36 +53,30 @@ let locationCheck;
 
 setTimeout(function showLoc() {
     $("#curLocation").css("display", "inline-block");
-    locationCheck = setInterval(getLocation, 2500);
-}, 2000)
-getLocation();
+/*     locationCheck = setInterval(getLocation, intervalInc); */
+}, 2000);
 
 
-
-
-
-
-function getLocation() {
+(function getLocation() {
     navigator.geolocation.getCurrentPosition((pos) => {
         let c = pos.coords;
-        console.log("longitude = " + c.longitude, "latitude = " + c.latitude);
+        console.log("longitude (x) = " + c.longitude, "latitude (y) = " + c.latitude);
         showLocation(c.longitude, c.latitude);
     }); //  longitude = x, latitude = y
-}
-function showLocation(x, y) {
-    if (x > 35.2947 || x < 35.1459 || y < 31.7266 || y > 31.8091) {
+})();
 
+function showLocation(x, y) {
+    if (x > bottomRight.x || x < bottomLeft.x || y < bottomLeft.y || y > topRight.y) {
+        
         console.log("Error: location is outside boundries.");
     } else {
         //console.log(x, y);
-        let putX = (x - bottonLeft[0]) / (topRight[0] - topLeft[0]) * 98;
-        let putY = (y - bottonLeft[1]) / (topLeft[1] - bottonLeft[1]) * 96;
+        let putX = (x - bottomLeft.x) / (topRight.x - topLeft.x) * 98;
+        let putY = (y - bottomLeft.y) / (topLeft.y - bottomLeft.y) * 96;
         $("#curLocation").css("bottom", putY + "%");
         $("#curLocation").css("left", putX + "%");
     }
-
 }
-
 
 function settings() {
     //clearInterval(locationCheck);
@@ -94,9 +86,8 @@ function settings() {
 }
 
 function resume() {
-    //locationCheck = setInterval(getLocation, 1000);
+    //locationCheck = setInterval(getLocation, intervalInc);
     $("body").css("background-color", "rgb(71, 71, 255)");
     $("#settingsWindow").css("display", "none");
     $("#map").css("opacity", "100%");
-
 }
